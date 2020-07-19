@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/randomDogFragment"
+          android:icon="@drawable/ic_dog"
+          android:title="@string/random_dog"
+          app:showAsAction="ifRoom"/>
+    <item android:id="@+id/likedDogsFragment"
+          android:icon="@drawable/ic_like"
+          android:title="@string/liked_dogs"
+          app:showAsAction="ifRoom"/>
+    <item android:id="@+id/aboutFragment"
+          android:icon="@drawable/ic_about"
+          android:title="@string/about"
+          app:showAsAction="ifRoom"/>
+</menu>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/randomDogMotionLayout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/random_dog_scene"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/randomDogCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardElevation="1dp"
+            app:cardCornerRadius="2dp"
+            app:cardPreventCornerOverlap="false">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/randomDogPhoto"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/randomDogErrorImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                app:tint="?colorOnSurface"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/randomDogLike"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:srcCompat="@drawable/ic_like"
+            android:tint="?colorOnSurface"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/randomDogShare"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:srcCompat="@drawable/ic_share"
+            android:tint="?colorOnSurface"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/randomDogNext"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:srcCompat="@drawable/ic_left_arrow"
+            android:tint="?colorOnSurface"/>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

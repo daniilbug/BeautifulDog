@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Beautiful Dog</string>
+    <string name="share">Choose an app where you\'re gonna share it</string>
+    <string name="dog">Dog</string>
+    <string name="random_dog">Random dog</string>
+    <string name="liked_dogs">Liked dogs</string>
+    <string name="about">About</string>
+    <string name="empty_liked_dogs">You haven\'t liked any dogs yet..</string>
+    <string name="api_text">This app uses a great api to allow you see those pretty, gorgeous, adorable dogs. If you\'re interested in,
+        you can check out a web site of it.
+    </string>
+    <string name="api_url">https://dog.ceo/dog-api/</string>
+</resources>

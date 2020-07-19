@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Transition android:id="@+id/shareDog" app:constraintSetStart="@id/defaultState"
+                app:constraintSetEnd="@id/shareDogState">
+        <OnSwipe app:touchAnchorId="@id/randomDogCard"
+                 app:touchRegionId="@id/randomDogCard"
+                 app:touchAnchorSide="top"
+                 app:dragDirection="dragUp"/>
+
+        <KeyFrameSet>
+            <KeyAttribute app:motionTarget="@+id/randomDogShare" app:framePosition="40">
+                <CustomAttribute app:attributeName="colorFilter"
+                                 app:customColorValue="@android:color/darker_gray"/>
+            </KeyAttribute>
+        </KeyFrameSet>
+    </Transition>
+
+    <Transition android:id="@+id/likeDog" app:constraintSetStart="@id/defaultState"
+                app:constraintSetEnd="@id/likeDogState">
+        <OnSwipe app:touchAnchorId="@id/randomDogCard"
+                 app:touchAnchorSide="bottom"
+                 app:touchRegionId="@id/randomDogCard"
+                 app:dragDirection="dragDown"/>
+        <KeyFrameSet>
+            <KeyAttribute app:motionTarget="@+id/randomDogLike" app:framePosition="40">
+                <CustomAttribute app:attributeName="colorFilter" app:customColorValue="@android:color/holo_red_dark"/>
+            </KeyAttribute>
+        </KeyFrameSet>
+
+    </Transition>
+
+    <Transition android:id="@+id/nextDog" app:constraintSetStart="@id/defaultState"
+                app:constraintSetEnd="@id/nextDogState">
+        <OnSwipe app:touchAnchorId="@id/randomDogCard"
+                 app:touchAnchorSide="start"
+                 app:touchRegionId="@id/randomDogCard"
+                 app:dragDirection="dragStart"/>
+
+    </Transition>
+
+    <Transition android:id="@+id/showCardAfterLike" app:constraintSetStart="@id/cardAfterLikeState"
+                app:constraintSetEnd="@id/defaultState" app:duration="400"/>
+    <Transition android:id="@+id/showCardAfterShare" app:constraintSetStart="@id/cardOnTopState"
+                app:constraintSetEnd="@id/defaultState" app:duration="400"/>
+    <Transition android:id="@+id/showCardWithNewDog" app:constraintSetStart="@id/nextCardState"
+                app:constraintSetEnd="@id/defaultState" app:duration="400"/>
+
+    <ConstraintSet android:id="@+id/defaultState">
+        <Constraint android:id="@+id/randomDogCard"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"/>
+
+        <Constraint android:id="@+id/randomDogLike"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:alpha="0.8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="64dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorOnSurface"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/randomDogShare"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:alpha="0.8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="64dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorOnSurface"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/randomDogNext"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:alpha="0.0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="48dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorOnSurface"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/nextDogState" app:deriveConstraintsFrom="@+id/defaultState">
+        <Constraint android:id="@+id/randomDogCard"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"/>
+
+        <Constraint android:id="@+id/randomDogNext"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:alpha="0.6"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="64dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorPrimary"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/likeDogState" app:deriveConstraintsFrom="@id/defaultState">
+        <Constraint android:id="@+id/randomDogCard"
+                    app:layout_constraintTop_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"/>
+
+
+        <Constraint android:id="@+id/randomDogLike"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:alpha="0.0"
+                    android:elevation="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="32dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="@android:color/holo_red_dark"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/randomDogShare"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"/>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/shareDogState" app:deriveConstraintsFrom="@id/defaultState">
+        <Constraint android:id="@+id/randomDogCard"
+                    app:layout_constraintBottom_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"/>
+
+        <Constraint android:id="@+id/randomDogShare"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:alpha="0.0"
+                    android:elevation="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="32dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="@android:color/darker_gray"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/randomDogLike"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/cardOnTopState" app:deriveConstraintsFrom="@id/defaultState">
+        <Constraint android:id="@+id/randomDogCard"
+                    app:layout_constraintBottom_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="16dp"
+                    android:alpha="0"
+                    android:layout_marginEnd="16dp"/>
+
+        <Constraint android:id="@+id/randomDogShare"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:alpha="0.0"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="32dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorOnSurface"/>
+        </Constraint>
+    </ConstraintSet>
+
+
+    <ConstraintSet android:id="@+id/cardAfterLikeState" app:deriveConstraintsFrom="@id/defaultState">
+        <Constraint android:id="@+id/randomDogCard"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="parent"
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"/>
+
+        <Constraint android:id="@+id/randomDogLike"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:alpha="0.0"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="32dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorOnSurface"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/nextCardState" app:deriveConstraintsFrom="@id/defaultState">
+        <Constraint android:id="@+id/randomDogCard"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="parent"
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"/>
+
+        <Constraint android:id="@+id/randomDogNext"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:alpha="0.6"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="64dp">
+
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorPrimary"/>
+        </Constraint>
+    </ConstraintSet>
+</MotionScene>

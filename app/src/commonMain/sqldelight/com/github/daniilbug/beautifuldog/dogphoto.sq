@@ -1,0 +1,19 @@
+CREATE TABLE DogPhotoModel (
+  url TEXT PRIMARY KEY,
+  creationDate INTEGER NOT NULL
+);
+
+selectAll:
+SELECT url FROM DogPhotoModel ORDER BY creationDate DESC;
+
+photoExists:
+SELECT EXISTS(SELECT * FROM DogPhotoModel WHERE url = ?);
+
+insert:
+INSERT INTO DogPhotoModel (url, creationDate) VALUES (?, strftime('%s','now'));
+
+delete:
+DELETE FROM DogPhotoModel WHERE url = ?;
+
+deleteAll:
+DELETE FROM DogPhotoModel;

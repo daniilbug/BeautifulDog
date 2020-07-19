@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Transition android:id="@+id/unlike" app:constraintSetStart="@id/defaultState"
+                app:constraintSetEnd="@id/unlikeState">
+        <OnSwipe
+                app:touchAnchorId="@id/fullPhotoCard"
+                app:touchRegionId="@id/fullPhotoCard"
+                app:touchAnchorSide="bottom"
+                app:dragDirection="dragDown"/>
+
+        <KeyFrameSet>
+            <KeyAttribute app:motionTarget="@+id/fullPhotoUnlike" app:framePosition="40">
+                <CustomAttribute app:attributeName="colorFilter" app:customColorValue="@android:color/holo_red_dark"/>
+            </KeyAttribute>
+        </KeyFrameSet>
+    </Transition>
+
+    <Transition android:id="@+id/share" app:constraintSetStart="@id/defaultState"
+                app:constraintSetEnd="@id/shareFullState">
+        <OnSwipe
+                app:touchAnchorId="@id/fullPhotoCard"
+                app:touchRegionId="@id/fullPhotoCard"
+                app:touchAnchorSide="top"
+                app:dragDirection="dragUp"/>
+
+        <KeyFrameSet>
+            <KeyAttribute app:motionTarget="@+id/fullPhotoShare" app:framePosition="40">
+                <CustomAttribute app:attributeName="colorFilter" app:customColorValue="@android:color/darker_gray"/>
+            </KeyAttribute>
+        </KeyFrameSet>
+    </Transition>
+
+    <Transition android:id="@+id/bringCardBack"
+                app:constraintSetStart="@id/bringCardBackAfterShareState"
+                app:constraintSetEnd="@id/defaultState"
+                app:duration="400"/>
+
+    <Transition android:id="@+id/cardToLeft" app:constraintSetStart="@id/defaultState" app:constraintSetEnd="@id/cardOnLeftState">
+        <OnSwipe
+                app:touchAnchorId="@id/fullPhotoCard"
+                app:touchRegionId="@id/fullPhotoCard"
+                app:touchAnchorSide="start"
+                app:dragDirection="dragStart"/>
+    </Transition>
+
+    <Transition android:id="@+id/cardToRight" app:constraintSetStart="@id/defaultState" app:constraintSetEnd="@id/cardOnRightState">
+        <OnSwipe
+                app:touchAnchorId="@id/fullPhotoCard"
+                app:touchRegionId="@id/fullPhotoCard"
+                app:touchAnchorSide="end"
+                app:dragDirection="dragEnd"/>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/defaultState">
+        <Constraint
+                android:id="@+id/fullPhotoCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Constraint android:id="@+id/fullPhotoUnlike"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:alpha="0.8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginBottom="64dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorOnSurface"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/fullPhotoShare"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:alpha="0.8"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="64dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorOnSurface"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/fullPhotoRight"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:alpha="0.0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="32dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorOnSurface"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/fullPhotoLeft"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:alpha="0.0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="32dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorOnSurface"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/unlikeState" app:deriveConstraintsFrom="@id/defaultState">
+        <Constraint
+                android:id="@+id/fullPhotoCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Constraint android:id="@+id/fullPhotoUnlike"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:alpha="0.0"
+                    android:elevation="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginBottom="56dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="@android:color/holo_red_dark"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/shareFullState" app:deriveConstraintsFrom="@id/defaultState">
+        <Constraint
+                android:id="@+id/fullPhotoCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Constraint android:id="@+id/fullPhotoShare"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:alpha="0.0"
+                    android:layout_marginTop="56dp"
+                    android:elevation="16dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="@android:color/darker_gray"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/bringCardBackAfterShareState" app:deriveConstraintsFrom="@id/defaultState">
+        <Constraint
+                android:id="@+id/fullPhotoCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Constraint android:id="@+id/fullPhotoShare"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:alpha="0.0"
+                    android:layout_marginTop="56dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorOnSurface"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/cardOnLeftState" app:deriveConstraintsFrom="@id/defaultState">
+        <Constraint
+                android:id="@+id/fullPhotoCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"/>
+
+        <Constraint android:id="@+id/fullPhotoLeft"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:alpha="0.4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="48dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorPrimary"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/cardOnRightState" app:deriveConstraintsFrom="@id/defaultState">
+        <Constraint
+                android:id="@+id/fullPhotoCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="parent"/>
+
+        <Constraint android:id="@+id/fullPhotoRight"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:alpha="0.4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginStart="48dp">
+            <CustomAttribute app:attributeName="colorFilter" app:customColorValue="?colorPrimary"/>
+        </Constraint>
+    </ConstraintSet>
+</MotionScene>
