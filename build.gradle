@@ -1,4 +1,7 @@
 buildscript {
+    ext {
+        kotlin_version = '1.3.72'
+    }
     repositories {
         google()
         jcenter()
@@ -6,10 +9,15 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.0'
         classpath 'com.squareup.sqldelight:gradle-plugin:1.4.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 repositories {
     google()
     jcenter()
+    mavenCentral()
+    maven {
+        url  "https://dl.bintray.com/ekito/koin"
+    }
 }

@@ -1,3 +1,4 @@
+include ':android'
 rootProject.name = 'BeautifulDog'
 
-include ':app'
+include ':BeautifulDog.shared'
