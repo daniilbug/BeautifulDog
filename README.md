@@ -11,6 +11,7 @@ Even though it's an android app, all bussiness logic is written using kotlin mul
 <img src='screenshots/dog_motion.gif' height='450'>
 <img src='screenshots/liked_dogs.jpg' height='450'>
 <img src='screenshots/full_photo.jpg' height='450'>
+
 ## What it uses
 ### Data
 - [SQLDelight](https://github.com/cashapp/sqldelight) - multiplatform sqlite database orm.
