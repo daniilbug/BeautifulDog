@@ -17,7 +17,7 @@ class PersistentLikedDogPhotoRepository(driverFactory: DriverFactory): LikedDogP
             .selectAll()
             .asFlow()
             .mapToList()
-            .map { photos -> photos.map { photoUrl -> DogPhoto(photoUrl) } }
+            .map { photos -> photos.map { photoUrl: String -> DogPhoto(photoUrl) } }
     }
 
     override suspend fun addNewPhoto(photo: DogPhoto) {
